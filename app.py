@@ -2,7 +2,7 @@ from dash import Dash, dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
 
-app = Dash(__name__)
+dash_app = Dash(__name__)
 
 df = pd.read_csv("output.csv")
 df = df.sort_values(by="Date")
@@ -34,9 +34,10 @@ def create_figure(df):
 
 fig = create_figure(df)
 
-app.layout = html.Div([
+dash_app.layout = html.Div([
     html.H1(
         children='Pink Morsel Sales 2018 - 2022',
+        id='heading',
         style={
             'textAlign': 'center',
         }
@@ -74,4 +75,4 @@ def update_region(region):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    dash_app.run(debug=True)
