@@ -4,13 +4,9 @@ import pandas as pd
 
 dash_app = Dash(__name__)
 
-df = pd.read_csv("output.csv")
+df = pd.read_csv(r"/home/jacob/python_dash/quantium-starter-repo/src/output.csv")
 df = df.sort_values(by="Date")
 
-# north_df = df[df['Region'] == 'north']
-# east_df = df[df['Region'] == 'east']
-# south_df = df[df['Region'] == 'south']
-# west_df = df[df['Region'] == 'west']
 
 def create_figure(df):
     fig = px.line(df, x="Date", y='Sales', 
@@ -75,4 +71,4 @@ def update_region(region):
 
 
 if __name__ == '__main__':
-    dash_app.run(debug=True)
+    dash_app.run(debug=False)
